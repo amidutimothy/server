@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router();
 
 
-//then now i create a json data array 
+//then now i create a json dummy data array 
 
 let data = [
     {id:1, name:"Things fall apart", genre:"fantacy", author:"Kinua achede"},
@@ -39,7 +39,7 @@ router.get('/:id', function(req , res){
 
 //CREATE LETS ADD MORE BOOKS TO THE LIST 
 router.post('/', function(req, res){
-    let itemIds = books.map(item => item.id);
+    let itemIds = data.map(item => item.id);
     let newId = itemIds.length > 0 ? Math.max.apply(Math, itemIds) + 1 : 1;
     let newItem = {
         id: newId,
@@ -53,7 +53,5 @@ router.post('/', function(req, res){
     res.status(201).json(newItem);
 
 })
-
-
 
 module.exports = router;
